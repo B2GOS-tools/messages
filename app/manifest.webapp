@@ -1,8 +1,7 @@
 {
 	"name": "Messages",
 	"description": "FxOS Messages",
-	"type": "privileged",
-	"launch_path": "/index.html",
+	"launch_path": "/messages/app/index.html",
 	"developer": {
 		"name": "The Gaia Team",
 		"url": "https://github.com/fxos/"
