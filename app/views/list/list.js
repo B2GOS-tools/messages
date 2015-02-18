@@ -13,6 +13,6 @@ pipe.request('getAll').then(results => {
 });
 
 listEl.addEventListener('click', e => {
-  pipe.requestPage('/thread/id/' + e.target.dataset.id);
+  pipe.requestPage('/views/thread/index.html?id=' + e.target.dataset.id);
   e.preventDefault();
 });

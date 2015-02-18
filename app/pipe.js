@@ -25,7 +25,7 @@ function Pipe(config) {
     self.addEventListener('message', e => {
       this.debug(e.data);
 
-      this._handlers[e.data.resource](e.data).then((results) => {
+      this._handlers[e.data.resource](e.data.params).then((results) => {
         self.postMessage({
           resource: e.data.resource,
           results: results
@@ -80,9 +80,10 @@ Pipe.prototype = {
 
   /**
    * Requests *something*, generally data from a worker.
-   * @param {String} resource
+   * @param {String} resource Method of the worker.
+   * @param {Object} params Deliver to the worker.
    */
-  request: function(resource) {
+  request: function(resource, params) {
     return new Promise(resolve => {
       var pipeWorker;
       if (!this._workerRefs[this._src]) {
@@ -91,7 +92,7 @@ Pipe.prototype = {
       }
 
       this._handlers[resource] = resolve;
-      pipeWorker.postMessage({resource: resource});
+      pipeWorker.postMessage({resource: resource, params: params});
     });
   },
 
@@ -117,8 +118,8 @@ Pipe.prototype = {
   /**
    * Requests that a new page is loaded.
    */
-  requestPage: function() {
-
+  requestPage: function(url) {
+    window.open(url, '_blank');
   }
 
 };
