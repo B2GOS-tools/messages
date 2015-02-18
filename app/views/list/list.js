@@ -1,7 +1,18 @@
+var pipe = new Pipe({src: '/views/list/worker.js'});
 var listEl = document.getElementById('thread-list');
 
-for (var i = 0; i < 20; i++) {
-  var item = document.createElement('a');
-  item.innerHTML = '<div><h3>Message Thread #' + i + '</h3></div>';
-  listEl.appendChild(item);
-}
+pipe.request('getAll').then(results => {
+  results.forEach((result, idx) => {
+    var item = document.createElement('a');
+    item.innerHTML = `<div data-id="${idx}">
+      <h3>Message From: ${result.from}</h3>
+      <p>${result.content}</p>
+    </div>`;
+    listEl.appendChild(item);
+  });
+});
+
+listEl.addEventListener('click', e => {
+  pipe.requestPage('/thread/id/' + e.target.dataset.id);
+  e.preventDefault();
+});
