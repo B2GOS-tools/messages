@@ -17,8 +17,7 @@
   },
   "devDependencies": {},
   "dependencies": {
-    "fxos-build": "0.3.4",
-    "gulp": "3.8.x",
-    "http-server": "^0.7.4"
+    "fxos-build": "0.4.0",
+    "gulp": "3.8.x"
   }
 }
