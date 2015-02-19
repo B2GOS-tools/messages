@@ -1,4 +1,5 @@
-importScripts('/pipe.js');
+importScripts('/components/pipe.js/pipe.js');
+
 
 var pipe = new Pipe();
 

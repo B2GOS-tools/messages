@@ -88,7 +88,7 @@ Pipe.prototype = {
       var pipeWorker;
       if (!this._workerRefs[this._src]) {
         pipeWorker = this._workerRefs[this._src] = this.getWorkerTypeForSrc();
-        pipeWorker.addEventListener('message', this.onSmartWorkerMessage.bind(this), false);
+        pipeWorker.addEventListener('message', this.onPipeWorkerMessage.bind(this), false);
       }
 
       this._handlers[resource] = resolve;
@@ -99,7 +99,7 @@ Pipe.prototype = {
   /**
    * Called whenever we receive a message from a worker.
    */
-  onSmartWorkerMessage: function(e) {
+  onPipeWorkerMessage: function(e) {
     console.log('Worker said: ', e.data);
 
     if (e.data.resource) {
