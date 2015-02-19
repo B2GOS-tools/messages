@@ -1,4 +1,10 @@
-var pipe = new Pipe({src: '/views/list/worker.js'});
+var pipe = new Pipe({
+  src: [
+    '/views/list/worker.js',
+    '/views/shared_logic.js'
+  ],
+  overrides: overrides
+});
 var listEl = document.getElementById('thread-list');
 
 pipe.request('getAll').then(results => {

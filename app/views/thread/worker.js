@@ -2,7 +2,7 @@ importScripts('/components/pipe.js/pipe.js');
 
 var pipe = new Pipe();
 
-pipe.handle('get', params => {
+pipe.handle('getMessages', params => {
   return new Promise(resolve => {
     if (params.id == 0) {
       resolve({

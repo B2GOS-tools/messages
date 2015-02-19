@@ -1,4 +1,10 @@
-var pipe = new Pipe({src: '/views/thread/worker.js'});
+var pipe = new Pipe({
+  src: [
+    '/views/thread/worker.js',
+    '/views/shared_logic.js'
+  ],
+  overrides: overrides
+});
 
 var qs = (function(a) {
     if (a == "") return {};
@@ -14,9 +20,10 @@ var qs = (function(a) {
     return b;
 })(window.location.search.substr(1).split('&'));
 
+var h1 = document.querySelector('gaia-header h1');
+
 var id = qs.id;
-pipe.request('get', {id: id}).then(result => {
-  var h1 = document.querySelector('gaia-header h1');
+pipe.request('getMessages', {id: id}).then(result => {
   h1.textContent = result.from;
 
   var list = document.getElementById('message-list');
@@ -24,5 +31,16 @@ pipe.request('get', {id: id}).then(result => {
     var newMessage = document.createElement('div');
     newMessage.textContent = message;
     list.appendChild(newMessage);
+  });
+});
+
+// Update a message on click to demonstrate shared worker functionality.
+document.body.addEventListener('click', e => {
+  var newName = 'New Random Name ' + Date.now();
+  h1.textContent = newName;
+
+  pipe.request('updateContact', {
+    id: 0,
+    from: newName
   });
 });
