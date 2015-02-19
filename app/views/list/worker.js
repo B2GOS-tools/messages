@@ -1,6 +1,5 @@
 importScripts('/components/pipe.js/pipe.js');
 
-
 var pipe = new Pipe();
 
 pipe.handle('getAll', () => {
