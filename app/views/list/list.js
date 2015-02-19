@@ -22,3 +22,10 @@ listEl.addEventListener('click', e => {
   pipe.requestPage('/views/thread/index.html?id=' + e.target.dataset.id);
   e.preventDefault();
 });
+
+pipe.handle('updateContact', results => {
+  return new Promise(resolve => {
+    document.querySelector('h3').textContent = 'Message From: ' + results.from;
+    resolve();
+  });
+});
