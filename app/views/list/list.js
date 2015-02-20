@@ -23,7 +23,7 @@ listEl.addEventListener('click', e => {
   e.preventDefault();
 });
 
-pipe.handle('updateContact', results => {
+pipe.handle('updateContact:success', results => {
   return new Promise(resolve => {
     document.querySelector('h3').textContent = 'Message From: ' + results.from;
     resolve();
