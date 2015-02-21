@@ -14,14 +14,18 @@
 
   <script defer src="/components/pipe-core/pipe.js"></script>
 
+  <script defer src="/views/lib/querystring.js"></script>
+
   <script defer src="thread.js"></script>
 </head>
  <body class="theme-communications">
   <gaia-header>
     <h1></h1>
-    <a></a>
-    <button data-icon="settings"></button>
   </gaia-header>
   <section id="message-list"></section>
+  <form id="new-message">
+    <input type="text">
+    <button type="submit">Send</button>
+  </form>
 </body>
 </html>

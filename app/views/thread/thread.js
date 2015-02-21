@@ -6,41 +6,38 @@ var pipe = new Pipe({
   overrides: overrides
 });
 
-var qs = (function(a) {
-    if (a == "") return {};
-    var b = {};
-    for (var i = 0; i < a.length; ++i)
-    {
-        var p=a[i].split('=', 2);
-        if (p.length == 1)
-            b[p[0]] = "";
-        else
-            b[p[0]] = decodeURIComponent(p[1].replace(/\+/g, " "));
-    }
-    return b;
-})(window.location.search.substr(1).split('&'));
-
 var h1 = document.querySelector('gaia-header h1');
+var list = document.getElementById('message-list');
 
-var id = qs.id;
+function addMessage(message) {
+  var newMessage = document.createElement('div');
+  newMessage.textContent = message;
+  list.appendChild(newMessage);
+}
+
+var id = querystring.id;
 pipe.request('getMessages', {id: id}).then(result => {
   h1.textContent = result.from;
 
-  var list = document.getElementById('message-list');
   result.messages.forEach(message => {
-    var newMessage = document.createElement('div');
-    newMessage.textContent = message;
-    list.appendChild(newMessage);
+    addMessage(message);
   });
 });
 
-// Update a message on click to demonstrate shared worker functionality.
-document.body.addEventListener('click', e => {
-  var newName = 'New Random Name ' + Date.now();
-  h1.textContent = newName;
+var newForm = document.querySelector('#new-message');
+var newMessageEl = document.querySelector('input[type="text"]');
+newForm.addEventListener('submit', e => {
+  e.preventDefault();
 
-  pipe.request('updateContact', {
-    id: 0,
-    from: newName
-  });
+  addMessage(newMessageEl.value);
+
+  var msgObj = {
+    id: id,
+    content: newMessageEl.value
+  };
+  pipe.request('newMessage', msgObj);
+  newMessageEl.value = '';
+  newMessageEl.focus();
 });
+
+newMessageEl.focus();

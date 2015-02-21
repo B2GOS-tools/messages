@@ -9,10 +9,12 @@ var listEl = document.getElementById('thread-list');
 
 pipe.request('getAll').then(results => {
   results.forEach((result, idx) => {
+    var lastMessage = result.messages[result.messages.length - 1];
+
     var item = document.createElement('a');
     item.innerHTML = `<div data-id="${idx}">
       <h3>Message From: ${result.from}</h3>
-      <p>${result.content}</p>
+      <p class="last-message">${lastMessage}</p>
     </div>`;
     listEl.appendChild(item);
   });
@@ -23,9 +25,10 @@ listEl.addEventListener('click', e => {
   e.preventDefault();
 });
 
-pipe.handle('updateContact:success', results => {
+pipe.handle('newMessage', results => {
   return new Promise(resolve => {
-    document.querySelector('h3').textContent = 'Message From: ' + results.from;
+    var lastMessage = document.querySelector('[data-id="' + results.id + '"] .last-message');
+    lastMessage.textContent = results.content;
     resolve();
   });
 });
