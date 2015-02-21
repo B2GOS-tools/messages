@@ -1,26 +1,25 @@
 <html>
 <head>
   <meta charset="UTF-8">
-  <title>Message List</title>
+  <title>Settings</title>
   <link rel="stylesheet" href="/components/base/base.css">
   <link rel="stylesheet" href="/components/gaia-fonts/style.css">
   <link rel="stylesheet" href="/components/gaia-theme/gaia-theme.css">
 
-  <link rel="stylesheet" href="list.css">
-
   <script defer src="/views/app_config.js"></script>
 
   <script defer src="/components/gaia-header/dist/gaia-header.js"></script>
+
   <script defer src="/components/pipe-core/pipe.js"></script>
 
-  <script defer src="list.js"></script>
+  <script defer src="settings.js"></script>
 </head>
  <body class="theme-communications">
-  <gaia-header>
-    <button id="settings-button" data-icon="settings"></button>
-    <h1>Message List</h1>
-    <button id="add-button" data-icon="add"></button>
+  <gaia-header action="back">
+    <h1>Settings</h1>
   </gaia-header>
-  <gaia-list id="thread-list"></gaia-list>
+  <section>
+    Edit some settings...
+  </section>
 </body>
 </html>

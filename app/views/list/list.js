@@ -32,3 +32,10 @@ pipe.handle('newMessage', results => {
     resolve();
   });
 });
+
+// Settings
+var settings = document.getElementById('settings-button');
+settings.addEventListener('click', e => {
+  e.preventDefault();
+  pipe.requestPage('/views/settings/index.html');
+});
