@@ -6,6 +6,13 @@ var pipe = new Pipe({
   overrides: overrides
 });
 
+// Handle the gaia-header back
+var gaiaHeader = document.querySelector('gaia-header');
+gaiaHeader.addEventListener('action', e => {
+  e.preventDefault();
+  window.close();
+});
+
 var h1 = document.querySelector('gaia-header h1');
 var list = document.getElementById('message-list');
 
