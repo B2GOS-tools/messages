@@ -1,18 +1,18 @@
 {
-	"name": "fxos-messages",
-	"description": "Cloud messages.",
-	"ignore": [
-		"**/.*",
-		"node_modules",
-		"app/components"
-	],
-	"dependencies": {
-		"gaia-header": "gaia-components/gaia-header#~0.6.3",
-		"gaia-list": "gaia-components/gaia-list",
-		"gaia-button": "gaia-components/gaia-button",
-		"gaia-theme": "gaia-components/gaia-theme#~0.4.5",
-		"gaia-fonts": "gaia-components/gaia-fonts#~0.2.1",
-		"gaia-text-input": "gaia-components/gaia-text-input",
-    "pipe-core": "KevinGrandon/pipe-core"
-	}
+  "name": "fxos-messages",
+  "description": "Cloud messages.",
+  "ignore": [
+    "**/.*",
+    "node_modules",
+    "app/components"
+  ],
+  "dependencies": {
+    "gaia-header": "gaia-components/gaia-header#~0.6.3",
+    "gaia-list": "gaia-components/gaia-list",
+    "gaia-button": "gaia-components/gaia-button",
+    "gaia-theme": "gaia-components/gaia-theme#~0.4.5",
+    "gaia-fonts": "gaia-components/gaia-fonts#~0.2.1",
+    "gaia-text-input": "gaia-components/gaia-text-input",
+    "pipe-core": "pipes/pipe-core"
+  }
 }
