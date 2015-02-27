@@ -24,7 +24,7 @@ function addMessage(message) {
 
 var id = querystring.id;
 pipe.request('getMessages', {id: id}).then(result => {
-  h1.textContent = result.from;
+  h1.textContent = result.with;
 
   result.messages.forEach(message => {
     addMessage(message);

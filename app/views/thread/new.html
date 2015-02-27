@@ -14,7 +14,7 @@
   <script defer src="/components/pipe-core/pipe.js"></script>
   <script defer src="/components/fallback-transitions/transitions.js"></script>
 
-  <script defer src="add.js"></script>
+  <script defer src="new.js"></script>
 </head>
  <body class="theme-communications">
   <gaia-header action="back">
@@ -22,7 +22,14 @@
   </gaia-header>
   <section id="message-list"></section>
   <form id="new-message">
-    <input type="text">
+    <div>
+      <label>To:</label>
+      <input id="message_with" name="Message[with]" type="text">
+    </div>
+    <div>
+      <label>Content:<label>
+      <input id="message_content" name="Message[content]" type="text">
+    </div>
     <button type="submit">Send</button>
   </form>
 </body>

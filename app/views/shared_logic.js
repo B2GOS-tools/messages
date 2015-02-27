@@ -1,8 +1,8 @@
 importScripts('/components/pipe-core/pipe.js');
 
-var currentContacts = [
+var _allMessages = [
   {
-    from: 'Kevin Grandon',
+    with: 'Kevin Grandon',
     messages: [
       'Hello this message rocks',
       'I <3 robots.',
@@ -11,13 +11,13 @@ var currentContacts = [
     ]
   },
   {
-    from: 'Some guy',
+    with: 'Some guy',
     messages: [
       'Another awesome message.'
     ]
   },
   {
-    from: 'Your mother',
+    with: 'Your mother',
     messages: [
       'Hello dear.',
       'Clean your room.'
@@ -29,17 +29,27 @@ var pipe = new Pipe();
 
 pipe.handle('newMessage', params => {
   return new Promise(resolve => {
-    pipe.debug('GOT updateContact event')
-    resolve({
-      id: params.id,
-      from: params.from
-    });
-  });
-});
+    pipe.debug('Got newMessage event.');
 
-pipe.handle('newMessage', params => {
-  return new Promise(resolve => {
-    pipe.debug('Got newMessage event.')
+    // If there is no id, it's a new message.
+    if (!params.id) {
+      _allMessages.push({
+        with: params.with,
+        messages: [
+          params.content
+        ]
+      });
+
+      resolve({
+        id: _allMessages.length - 1,
+        with: params.with,
+        messages: [
+          params.content
+        ]
+      });
+      return;
+    }
+
     // TOD: Add to database
     resolve({
       id: params.id,
@@ -50,12 +60,12 @@ pipe.handle('newMessage', params => {
 
 pipe.handle('getAll', () => {
   return new Promise(resolve => {
-    resolve(currentContacts);
+    resolve(_allMessages);
   });
 });
 
 pipe.handle('getMessages', params => {
   return new Promise(resolve => {
-    resolve(currentContacts[params.id]);
+    resolve(_allMessages[params.id]);
   });
 });

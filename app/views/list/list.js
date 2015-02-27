@@ -5,18 +5,24 @@ var pipe = new Pipe({
   ],
   overrides: overrides
 });
+
 var listEl = document.getElementById('thread-list');
+function renderThread(o) {
+  var item = document.createElement('a');
+    item.innerHTML = `<div data-id="${o.id}">
+      <h3>Message From: ${o.with}</h3>
+      <p class="last-message">${o.lastMessage}</p>
+    </div>`;
+  listEl.appendChild(item);
+}
 
 pipe.request('getAll').then(results => {
   results.forEach((result, idx) => {
-    var lastMessage = result.messages[result.messages.length - 1];
-
-    var item = document.createElement('a');
-    item.innerHTML = `<div data-id="${idx}">
-      <h3>Message From: ${result.from}</h3>
-      <p class="last-message">${lastMessage}</p>
-    </div>`;
-    listEl.appendChild(item);
+    renderThread({
+      id: idx,
+      with: result.with,
+      lastMessage: result.messages[result.messages.length - 1]
+    });
   });
 });
 
@@ -25,10 +31,23 @@ listEl.addEventListener('click', e => {
   e.preventDefault();
 });
 
-pipe.handle('newMessage', results => {
+pipe.handle('newMessage', result => {
   return new Promise(resolve => {
-    var lastMessage = document.querySelector('[data-id="' + results.id + '"] .last-message');
-    lastMessage.textContent = results.content;
+    var lastMessage = document.querySelector('[data-id="' + result.id + '"] .last-message');
+
+    // If we have a message element, update the content.
+    if (lastMessage) {
+      lastMessage.textContent = result.content;
+      return;
+    }
+
+    // Otherwise we've created a new thread.
+    renderThread({
+      id: result.id,
+      with: result.with,
+      lastMessage: result.messages[result.messages.length - 1]
+    });
+
     resolve();
   });
 });
