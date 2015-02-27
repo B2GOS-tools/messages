@@ -2,7 +2,9 @@
   "name": "fxos-messages",
   "version": "0.0.0",
   "description": "FxOS messages dependencies.",
-  "scripts": {},
+  "scripts": {
+    "start": "gulp"
+  },
   "repository": {
     "type": "git",
     "url": "git://github.com/fxos/messages.git"
