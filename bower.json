@@ -7,7 +7,7 @@
     "app/components"
   ],
   "dependencies": {
-    "gaia-header": "gaia-components/gaia-header#~0.6.3",
+    "gaia-header": "gaia-components/gaia-header#~0.7.0",
     "gaia-list": "gaia-components/gaia-list",
     "gaia-theme": "gaia-components/gaia-theme#~0.4.5",
     "gaia-fonts": "gaia-components/gaia-fonts#~0.2.1",
