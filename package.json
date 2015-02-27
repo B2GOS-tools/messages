@@ -15,7 +15,7 @@
     "url": "https://github.com/fxos/messages/issues"
   },
   "engines" : {
-    "node" : "0.11.14"
+    "node" : ">=0.10.31"
   },
   "devDependencies": {},
   "dependencies": {
