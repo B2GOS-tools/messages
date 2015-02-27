@@ -19,7 +19,7 @@
   },
   "devDependencies": {},
   "dependencies": {
-    "fxos-build": "0.4.0",
+    "fxos-build": "0.5.0",
     "gulp": "3.8.x"
   }
 }
