@@ -3,7 +3,8 @@
   "version": "0.0.0",
   "description": "FxOS messages dependencies.",
   "scripts": {
-    "start": "gulp build && gulp webserver"
+    "start": "gulp build && gulp webserver",
+    "postinstall": "bower install"
   },
   "repository": {
     "type": "git",
