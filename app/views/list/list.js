@@ -9,10 +9,10 @@ var pipe = new Pipe({
 var listEl = document.getElementById('thread-list');
 function renderThread(o) {
   var item = document.createElement('a');
-    item.innerHTML = `<div data-id="${o.id}">
-      <h3>Message From: ${o.with}</h3>
-      <p class="last-message">${o.lastMessage}</p>
-    </div>`;
+  item.innerHTML = `<div data-id="${o.id}">
+    <h3>Message From: ${o.with}</h3>
+    <p class="last-message">${o.lastMessage}</p>
+  </div>`;
   listEl.appendChild(item);
 }
 

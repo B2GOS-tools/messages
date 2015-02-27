@@ -1,3 +1,7 @@
 #thread-list div * {
   pointer-events: none;
 }
+
+gaia-list > a div {
+  border-top: 1px solid #ccc;
+}
