@@ -47,4 +47,4 @@ newForm.addEventListener('submit', e => {
   newMessageEl.focus();
 });
 
-newMessageEl.focus();
+//newMessageEl.focus();
