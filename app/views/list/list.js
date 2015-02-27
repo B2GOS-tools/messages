@@ -39,3 +39,10 @@ settings.addEventListener('click', e => {
   e.preventDefault();
   pipe.requestPage('/views/settings/index.html');
 });
+
+// New sms.
+var settings = document.getElementById('add-button');
+settings.addEventListener('click', e => {
+  e.preventDefault();
+  pipe.requestPage('/views/thread/new.html');
+});
