@@ -11,7 +11,7 @@
     "gaia-list": "gaia-components/gaia-list",
     "gaia-theme": "gaia-components/gaia-theme#~0.4.5",
     "gaia-fonts": "gaia-components/gaia-fonts#~0.2.1",
-    "fallback-transitions": "pipes/fallback-transitions",
-    "pipe-core": "pipes/pipe-core"
+    "pipe-core": "pipes/pipe-core",
+    "pipe-sheets": "pipes/pipe-sheets"
   }
 }
